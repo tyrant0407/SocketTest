@@ -1,4 +1,5 @@
 // server.js
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const http = require('http');
@@ -22,7 +23,7 @@ mongoose.set('strictQuery', false); // or true, depending on your preference
 
 
 try{
-  mongoose.connect('mongodb://127.0.0.1:27017/crm_db'); // Use 127.0.0.1 instead of localhost
+  mongoose.connect(`${process.env.DBURL}`); // Use 127.0.0.1 instead of localhost
  console.log(`Connection established to Database !!`);
 } catch(error){
    console.log("MongoDb Connection Failed:",error);
