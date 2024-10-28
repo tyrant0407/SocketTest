@@ -152,29 +152,7 @@ app.delete('/api/agents/:id', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 2000;
-
-
-function startServer() {
-  if (server) {
-      console.log(`Server is already running ${PORT}`);
-      return; // Prevent starting the server again
-  }
-
-  server.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-}
-
-// Call the function to start the server
-startServer();
-
-// Handle process termination
-process.on('SIGINT', () => {
-  if (server) {
-      server.close(() => {
-          console.log('Server closed');
-          process.exit(0);
-      });
-  }
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
